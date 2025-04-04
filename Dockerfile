@@ -18,8 +18,12 @@ RUN pip install -r requirements.txt
 # Copy project files into the container
 COPY . .
 
+
+# Make entrypoint executable
+RUN chmod +x entrypoint.sh
+
 # Expose port
 EXPOSE 8000
 
-# Default command
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+# Run the entrypoint
+ENTRYPOINT ["./entrypoint.sh"]
