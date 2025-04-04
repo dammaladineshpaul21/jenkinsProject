@@ -18,9 +18,8 @@ RUN pip install -r requirements.txt
 # Copy project files into the container
 COPY . .
 
-
 # Make entrypoint executable
-RUN chmod +x entrypoint.sh
+RUN sed -i 's/\r//' entrypoint.sh && chmod +x entrypoint.sh
 
 # Expose port
 EXPOSE 8000
